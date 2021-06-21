@@ -21,7 +21,7 @@ func main() {
 	}
 	defer nf.Close()
 
-	err = tpl.Execute(nf,nil)
+	err = tpl.Execute(nf, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
