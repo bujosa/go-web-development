@@ -22,8 +22,8 @@ func main() {
 	var c pineapple
 
 	mux := http.NewServeMux()
-	mux.Handle("/dog/", d)
-	mux.Handle("/cat", c)
+	mux.Handle("/apple/", d)
+	mux.Handle("/pineapple", c)
 
 	http.ListenAndServe(":8080", mux)
 }

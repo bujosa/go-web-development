@@ -9,10 +9,10 @@ type apple int
 
 func (m apple) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	switch req.URL.Path {
-	case "/dog":
-		io.WriteString(w, "doggy doggy doggy")
-	case "/cat":
-		io.WriteString(w, "kitty kitty kitty")
+	case "/apple":
+		io.WriteString(w, "apple apple apple")
+	case "/pineapple":
+		io.WriteString(w, "pineapple pineapple pineapple")
 	}
 }
 
