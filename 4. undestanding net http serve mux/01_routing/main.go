@@ -5,9 +5,9 @@ import (
 	"net/http"
 )
 
-type hotdog int
+type apple int
 
-func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+func (m apple) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	switch req.URL.Path {
 	case "/dog":
 		io.WriteString(w, "doggy doggy doggy")
@@ -17,6 +17,6 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	var d hotdog
+	var d apple
 	http.ListenAndServe(":8080", d)
 }
