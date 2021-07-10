@@ -6,16 +6,16 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", dog)
+	http.HandleFunc("/", lion)
 	http.ListenAndServe(":8080", nil)
 }
 
-func dog(w http.ResponseWriter, req *http.Request) {
+func lion(w http.ResponseWriter, req *http.Request) {
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
 	io.WriteString(w, `
 	<!--image doesn't serve-->
-	<img src="/toby.jpg">
+	<img src="/lion.webp">
 	`)
 }
