@@ -7,18 +7,18 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", dog)
-	http.HandleFunc("/toby.jpg", dogPic)
+	http.HandleFunc("/", lion)
+	http.HandleFunc("/lion.webp", lionPic)
 	http.ListenAndServe(":8080", nil)
 }
 
-func dog(w http.ResponseWriter, req *http.Request) {
+func lion(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, `<img src="/toby.jpg">`)
+	io.WriteString(w, `<img src="/lion.webp">`)
 }
 
-func dogPic(w http.ResponseWriter, req *http.Request) {
-	f, err := os.Open("toby.jpg")
+func lionPic(w http.ResponseWriter, req *http.Request) {
+	f, err := os.Open("lion.webp")
 	if err != nil {
 		http.Error(w, "file not found", 404)
 		return
