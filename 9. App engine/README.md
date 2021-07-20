@@ -21,14 +21,14 @@ handlers:
 ```
 gcloud app deploy app.yaml --project=<YOUR_PROJECT_ID>  -v 1
 my example:
-gcloud app deploy --project temp-137512
+gcloud app deploy --project example-for-go-deployment
 ```
 - view your project
   - http://YOUR_PROJECT_ID.appspot.com/
 
 
-example
-http://temp-145415.appspot.com/
+example:
+https://example-for-go-deployment.wm.r.appspot.com
 
 
 change DNS info at google domains
