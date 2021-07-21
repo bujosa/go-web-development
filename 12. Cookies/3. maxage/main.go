@@ -42,7 +42,10 @@ func expire(w http.ResponseWriter, req *http.Request) {
 		http.Redirect(w, req, "/set", http.StatusSeeOther)
 		return
 	}
-	c.MaxAge = -1 // delete cookie
+
+	// delete cookie
+	c.MaxAge = -1 
+
 	http.SetCookie(w, c)
 	http.Redirect(w, req, "/", http.StatusSeeOther)
 }
