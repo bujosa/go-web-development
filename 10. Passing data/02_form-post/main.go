@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"io"
 	"net/http"
 )
 
@@ -13,8 +13,11 @@ func main() {
 
 func foo(w http.ResponseWriter, req *http.Request) {
 	v := req.FormValue("q")
-	fmt.Fprintln(w, "Do my search: "+v)
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	io.WriteString(w, `
+	<form method="POST">
+	 <input type="text" name="q">
+	 <input type="submit">
+	</form>
+	<br>`+v)
 }
-
-// visit this page:
-// http://localhost:8080/?q=lion
