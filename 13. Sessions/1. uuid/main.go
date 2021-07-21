@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/satori/go.uuid"
 	"net/http"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 // For this code to run, you will need this package:
@@ -18,7 +19,7 @@ func main() {
 func index(w http.ResponseWriter, req *http.Request) {
 	cookie, err := req.Cookie("session")
 	if err != nil {
-		id := uuid.NewV4()
+		id, _ := uuid.NewV4()
 		cookie = &http.Cookie{
 			Name:  "session",
 			Value: id.String(),
