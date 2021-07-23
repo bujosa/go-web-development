@@ -3,16 +3,17 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"io"
 	"net/http"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var db *sql.DB
 var err error
 
 func main() {
-	db, err = sql.Open("mysql", "awsuser:mypassword@tcp(mydbinstance.cakwl95bxza0.us-west-1.rds.amazonaws.com:3306)/test02?charset=utf8")
+	db, err = sql.Open("mysql", "awsuser:mypassword@tcp(mydbinstance)/test02?charset=utf8")
 	check(err)
 	defer db.Close()
 
@@ -20,7 +21,7 @@ func main() {
 	check(err)
 
 	http.HandleFunc("/", index)
-	http.HandleFunc("/amigos", amigos)
+	http.HandleFunc("/friends", friends)
 	http.HandleFunc("/create", create)
 	http.HandleFunc("/insert", insert)
 	http.HandleFunc("/read", read)
@@ -37,8 +38,8 @@ func index(w http.ResponseWriter, req *http.Request) {
 	check(err)
 }
 
-func amigos(w http.ResponseWriter, req *http.Request) {
-	rows, err := db.Query(`SELECT aName FROM amigos;`)
+func friends(w http.ResponseWriter, req *http.Request) {
+	rows, err := db.Query(`SELECT aName FROM friends;`)
 	check(err)
 	defer rows.Close()
 
